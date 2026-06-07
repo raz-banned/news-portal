@@ -1,5 +1,6 @@
 import type { Article } from "@/features/articles/types"
 import { formatTime } from "@/lib/utils"
+import { Badge } from "../ui/badge"
 
 interface TopNewsSidebarProps {
   articles: Article[]
@@ -24,9 +25,9 @@ export function TopNewsSidebar({ articles }: TopNewsSidebarProps) {
             key={article.id}
             className="flex cursor-pointer items-start gap-2 bg-white px-2.5 py-2.5 transition-colors hover:bg-gray-50"
           >
-            <span className="mt-0.5 flex size-4.5 shrink-0 items-center justify-center rounded-sm bg-portal-red text-[10px] font-bold text-white">
+            <Badge className="mt-0.5 flex size-4.5 shrink-0 items-center justify-center rounded-sm bg-portal-red text-[10px] font-bold text-white">
               {index + 1}
-            </span>
+            </Badge>
             <div className="min-w-0">
               <p className="line-clamp-3 text-xs leading-[1.4] font-medium text-gray-900">
                 {article.title}
