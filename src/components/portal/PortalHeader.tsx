@@ -1,0 +1,27 @@
+import { Search } from "lucide-react"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
+
+export function PortalHeader() {
+  return (
+    <div className="flex items-center justify-between gap-4 bg-portal-navy px-4 py-2.5">
+      <div className="text-[19px] font-bold tracking-tight text-white [-webkit-font-smoothing:antialiased]">
+        News<em className="text-[#f5a623] not-italic">Portal</em>.kz
+      </div>
+      <div className="flex h-7.5 w-52 overflow-hidden rounded bg-white">
+        <Input
+          type="text"
+          placeholder="Поиск новостей..."
+          className="min-w-0 flex-1 rounded-none bg-transparent px-2.5 text-xs text-gray-700 outline-none placeholder:text-gray-400"
+        />
+        <Button
+          size="icon"
+          aria-label="Поиск"
+          className="hover:bg-portal-red-dar flex h-full w-8 shrink-0 items-center justify-center rounded-none bg-portal-red bg-clip-border text-white transition-colors active:translate-0!"
+        >
+          <Search className="size-3.5" />
+        </Button>
+      </div>
+    </div>
+  )
+}
