@@ -1,7 +1,7 @@
 import { Outlet } from "react-router"
 import { TopBar } from "@/components/portal/TopBar"
 import { PortalHeader } from "../portal/PortalHeader"
-import { CategoryNav } from "../portal/CaregoryNav"
+import { CategoryNav } from "../portal/CategoryNav"
 import { BreakingTicker } from "../portal/BreakingTicker"
 
 export default function Layout() {
