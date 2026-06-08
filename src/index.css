@@ -53,15 +53,6 @@
   --color-portal-red: oklch(0.5 0.2 27);
   --color-portal-red-dark: oklch(0.32 0.12 22);
   --color-portal-page: oklch(0.955 0 0);
-
-  @keyframes ticker-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
 }
 
 :root {
@@ -142,5 +133,14 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
