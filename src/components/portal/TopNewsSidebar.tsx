@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import type { Article } from "@/features/articles/types"
 import { formatTime } from "@/lib/utils"
 import { Badge } from "../ui/badge"
@@ -21,9 +22,10 @@ export function TopNewsSidebar({ articles }: TopNewsSidebarProps) {
 
       <div className="flex flex-col gap-px bg-gray-200">
         {items.map((article, index) => (
-          <div
+          <Link
             key={article.id}
-            className="flex cursor-pointer items-start gap-2 bg-white px-2.5 py-2.5 transition-colors hover:bg-gray-50"
+            to={`/articles/${article.id}`}
+            className="flex items-start gap-2 bg-white px-2.5 py-2.5 transition-colors hover:bg-gray-50"
           >
             <Badge className="mt-0.5 flex size-4.5 shrink-0 items-center justify-center rounded-sm bg-portal-red text-[10px] font-bold text-white">
               {index + 1}
@@ -36,7 +38,7 @@ export function TopNewsSidebar({ articles }: TopNewsSidebarProps) {
                 {formatTime(article.created_at)}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

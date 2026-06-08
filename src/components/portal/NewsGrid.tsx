@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import type { Article } from "@/features/articles/types"
 import { ArticleCard } from "./ArticleCard"
 
@@ -15,13 +16,12 @@ export function NewsGrid({ articles }: NewsGridProps) {
           Последние новости
         </h2>
         <div className="h-px flex-1 bg-gray-200" />
-        {/* TODO: заменить на <Link to="/articles"> когда появится роут */}
-        <button
-          type="button"
+        <Link
+          to="/articles"
           className="text-[11px] font-semibold text-portal-red hover:underline"
         >
           Все →
-        </button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-3 gap-2">

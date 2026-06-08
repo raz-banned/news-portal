@@ -1,13 +1,17 @@
 import { Search } from "lucide-react"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
+import { Link } from "react-router"
 
 export function PortalHeader() {
   return (
     <div className="flex items-center justify-between gap-4 bg-portal-navy px-4 py-2.5">
-      <div className="text-[19px] font-bold tracking-tight text-white [-webkit-font-smoothing:antialiased]">
+      <Link
+        to="/"
+        className="text-[19px] font-bold tracking-tight text-white [-webkit-font-smoothing:antialiased]"
+      >
         News<em className="text-[#f5a623] not-italic">Portal</em>.kz
-      </div>
+      </Link>
       <div className="flex h-7.5 w-52 overflow-hidden rounded bg-white">
         <Input
           type="text"
