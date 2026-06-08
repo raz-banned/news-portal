@@ -20,3 +20,10 @@ export function formatTime(dateStr: string) {
     minute: "2-digit",
   })
 }
+
+export function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("ru-RU", {
+    day: "numeric",
+    month: "long",
+  })
+}

@@ -1,20 +1,12 @@
+import { Link } from "react-router"
 import type { Article } from "@/features/articles/types"
-import { formatTime } from "@/lib/utils"
+import { formatDate, formatTime } from "@/lib/utils"
 
 interface ArticleCardProps {
   article: Article
 }
 
-// Можно вынести в utils.ts если понадобится в других местах
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("ru-RU", {
-    day: "numeric",
-    month: "long",
-  })
-}
-
 // Плейсхолдеры пока нет поля image_url и category в API.
-// Цвет и категория берутся по id % длина массива.
 const CARD_VARIANTS = [
   { bg: "bg-[#d8e4ef]", category: "Казахстан" },
   { bg: "bg-[#dde8d4]", category: "Экономика" },
@@ -28,7 +20,10 @@ export function ArticleCard({ article }: ArticleCardProps) {
   const variant = CARD_VARIANTS[article.id % CARD_VARIANTS.length]
 
   return (
-    <article className="group cursor-pointer overflow-hidden rounded bg-white">
+    <Link
+      to={`/articles/${article.id}`}
+      className="group block overflow-hidden rounded bg-white"
+    >
       <div className={`h-22.5 ${variant.bg}`} />
       <div className="p-2">
         <p className="mb-1 text-[10px] font-semibold tracking-wide text-portal-red uppercase">
@@ -42,6 +37,6 @@ export function ArticleCard({ article }: ArticleCardProps) {
           <span>{formatTime(article.created_at)}</span>
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
