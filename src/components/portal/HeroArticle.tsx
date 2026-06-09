@@ -26,7 +26,7 @@ export function HeroArticle({ article }: HeroArticleProps) {
 
       <div className="absolute inset-x-0 bottom-0 px-3.5 pt-4 pb-3.5">
         <Badge className="mb-1.5 inline-block rounded-sm bg-portal-red px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-          Главное
+          Популярное
         </Badge>
 
         <h2 className="text-[15px] leading-snug font-semibold text-white transition-opacity group-hover:opacity-90">
