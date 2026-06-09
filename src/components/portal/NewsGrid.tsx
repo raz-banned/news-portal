@@ -11,11 +11,10 @@ export function NewsGrid({ articles }: NewsGridProps) {
   if (!articles.length) return null
 
   const filteredArticles = articles.filter((article) => {
-    // const category = searchParams.get("category")
+    const category = searchParams.get("category")
     const query = searchParams.get("q")
 
-    // TODO: implement category filtering
-    // if (category && article.category !== category) return false
+    if (category && article.category !== category) return false
     if (query && !article.title.toLowerCase().includes(query.toLowerCase()))
       return false
 
