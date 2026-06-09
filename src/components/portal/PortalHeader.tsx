@@ -1,9 +1,14 @@
 import { Search } from "lucide-react"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
-import { Link } from "react-router"
+import { Link, type SetURLSearchParams } from "react-router"
 
-export function PortalHeader() {
+interface PortalHeaderProps {
+  searchParams: URLSearchParams
+  onSearch: SetURLSearchParams
+}
+
+export function PortalHeader({ searchParams, onSearch }: PortalHeaderProps) {
   return (
     <div className="flex items-center justify-between gap-4 bg-portal-navy px-4 py-2.5">
       <Link
@@ -17,6 +22,13 @@ export function PortalHeader() {
           type="text"
           placeholder="Поиск новостей..."
           className="min-w-0 flex-1 rounded-none bg-transparent px-2.5 text-xs text-gray-700 outline-none placeholder:text-gray-400"
+          value={searchParams.get("q") || ""}
+          onChange={(e) =>
+            onSearch((prev) => {
+              prev.set("q", e.target.value)
+              return prev
+            })
+          }
         />
         <Button
           size="icon"
