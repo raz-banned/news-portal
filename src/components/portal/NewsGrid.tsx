@@ -29,7 +29,7 @@ export function NewsGrid({ articles }: NewsGridProps) {
         </h2>
         <div className="h-px flex-1 bg-gray-200" />
         <Link
-          to="/articles"
+          to="/articles?page=1&limit=12"
           className="text-[11px] font-semibold text-portal-red hover:underline"
         >
           Все →

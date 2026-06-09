@@ -13,8 +13,8 @@ export function usePaginatedArticles(options: UsePaginatedArticlesOptions) {
     queryFn: async () => {
       const { data } = await api.get<Article[]>("/articles", {
         params: {
-          _page: options.page ?? 1,
-          _limit: options.limit ?? 10,
+          page: options.page ?? 1,
+          limit: options.limit ?? 10,
         },
       })
       return data
