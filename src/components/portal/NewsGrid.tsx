@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, useSearchParams } from "react-router"
 import type { Article } from "@/features/articles/types"
 import { ArticleCard } from "./ArticleCard"
 
@@ -7,7 +7,20 @@ interface NewsGridProps {
 }
 
 export function NewsGrid({ articles }: NewsGridProps) {
+  const [searchParams] = useSearchParams()
   if (!articles.length) return null
+
+  const filteredArticles = articles.filter((article) => {
+    // const category = searchParams.get("category")
+    const query = searchParams.get("q")
+
+    // TODO: implement category filtering
+    // if (category && article.category !== category) return false
+    if (query && !article.title.toLowerCase().includes(query.toLowerCase()))
+      return false
+
+    return true
+  })
 
   return (
     <section>
@@ -25,7 +38,7 @@ export function NewsGrid({ articles }: NewsGridProps) {
       </div>
 
       <div className="grid grid-cols-3 gap-2">
-        {articles.map((article) => (
+        {filteredArticles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}
       </div>
