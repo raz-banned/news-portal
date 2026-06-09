@@ -8,16 +8,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
 import { formatDateTime } from "@/lib/utils"
 
-// Плейсхолдер пока нет поля category в API — идентично ArticleCard
-const CATEGORIES = [
-  "Казахстан",
-  "Экономика",
-  "Спорт",
-  "Технологии",
-  "Общество",
-  "Мир",
-] as const
-
 function ArticleSkeleton() {
   return (
     <div className="grid grid-cols-[1fr_220px] items-start gap-5">
@@ -61,7 +51,6 @@ export function ArticlePage() {
   if (isError) return <QueryError error={error} />
   if (!article) return null
 
-  const category = CATEGORIES[article.id % CATEGORIES.length]
   const sidebarArticles = (allArticles ?? []).filter((a) => a.id !== article.id)
 
   return (
@@ -76,7 +65,7 @@ export function ArticlePage() {
         </Link>
 
         <Badge className="mb-2.5 block rounded-sm bg-portal-red px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-          {category}
+          {article.category}
         </Badge>
 
         <h1 className="mb-3 text-xl leading-snug font-bold text-portal-navy">
@@ -94,7 +83,6 @@ export function ArticlePage() {
           </span>
         </div>
 
-        {/* image — плейсхолдер, заменить на <img> когда появится image_url в API */}
         <div className="mb-5 h-52 w-full rounded">
           {article.image_url && (
             <img
