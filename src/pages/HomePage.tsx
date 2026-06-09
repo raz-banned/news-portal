@@ -54,11 +54,11 @@ export function HomePage() {
     )
   }
 
-  const rest = data.slice(1)
+  const rest = data.slice(1, 10)
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="grid grid-cols-[1fr_220px] gap-2.5">
+      <div className="grid grid-cols-[1fr_220px] place-items-center gap-2.5">
         <HeroArticle article={hero} />
         <TopNewsSidebar articles={rest} />
       </div>
