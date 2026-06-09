@@ -7,7 +7,7 @@ import { ArticlePage } from "@/pages/ArticlePage"
 import { ArticlesPage } from "@/pages/ArticlesPage"
 import { LoginPage } from "@/pages/LoginPage"
 import { AdminArticlesPage } from "@/pages/admin/AdminArticlesPage"
-import { AdminArticleFormPage } from "@/pages/admin/AdminArticleFormPage"
+import { AdminFormPage } from "@/pages/admin/AdminFormPage"
 
 export const router = createBrowserRouter([
   {
@@ -25,10 +25,10 @@ export const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           { path: "/admin", element: <AdminArticlesPage /> },
-          { path: "/admin/articles/new", element: <AdminArticleFormPage /> },
+          { path: "/admin/articles/new", element: <AdminFormPage /> },
           {
             path: "/admin/articles/:id/edit",
-            element: <AdminArticleFormPage />,
+            element: <AdminFormPage />,
           },
         ],
       },
