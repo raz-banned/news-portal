@@ -90,13 +90,20 @@ export function ArticlePage() {
           </span>
           <span className="flex items-center gap-1">
             <Eye className="size-3" aria-hidden="true" />
-            {/* views — плейсхолдер, убрать когда появится поле в API */}
-            12 450
+            {article.views.toLocaleString()} просмотров
           </span>
         </div>
 
         {/* image — плейсхолдер, заменить на <img> когда появится image_url в API */}
-        <div className="mb-5 h-52 w-full rounded bg-linear-to-br from-slate-700 via-slate-600 to-slate-800" />
+        <div className="mb-5 h-52 w-full rounded">
+          {article.image_url && (
+            <img
+              src={article.image_url}
+              alt={article.title}
+              className="h-full w-full object-cover"
+            />
+          )}
+        </div>
 
         <div className="text-sm leading-relaxed text-gray-800">
           {article.content
