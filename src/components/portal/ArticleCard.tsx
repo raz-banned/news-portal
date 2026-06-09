@@ -13,12 +13,14 @@ export function ArticleCard({ article }: ArticleCardProps) {
       className="group block overflow-hidden rounded bg-white"
     >
       <div className={`h-22.5`}>
-        {article.image_url && (
+        {article.image_url ? (
           <img
             src={article.image_url}
             alt={article.title}
             className="h-full w-full object-cover"
           />
+        ) : (
+          <div className="h-full w-full bg-gray-200" />
         )}
       </div>
       <div className="p-2">

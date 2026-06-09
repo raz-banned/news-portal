@@ -14,12 +14,14 @@ export function HeroArticle({ article }: HeroArticleProps) {
       to={`/articles/${article.id}`}
       className="group relative flex aspect-video w-full items-center overflow-hidden rounded"
     >
-      {article.image_url && (
+      {article.image_url ? (
         <img
           src={article.image_url}
           alt={article.title}
           className="h-full w-full object-cover"
         />
+      ) : (
+        <div className="h-full w-full bg-gray-200" />
       )}
 
       <div className="absolute inset-x-0 bottom-0 px-3.5 pt-4 pb-3.5">
