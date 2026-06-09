@@ -9,8 +9,8 @@ export default function Layout() {
   const [searchParams, setSearchParams] = useSearchParams()
 
   return (
-    <div className="min-h-screen bg-portal-page">
-      <header>
+    <div className="flex min-h-screen flex-col bg-portal-page">
+      <header className="w-full border-b">
         <TopBar />
         <PortalHeader searchParams={searchParams} onSearch={setSearchParams} />
         <CategoryNav
@@ -19,8 +19,10 @@ export default function Layout() {
         />
         <BreakingTicker />
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-3">
-        <Outlet />
+      <main className="w-full flex-1 py-3">
+        <div className="mx-auto max-w-5xl px-4">
+          <Outlet />
+        </div>
       </main>
       <footer className="mt-8">
         <PortalFooter />
