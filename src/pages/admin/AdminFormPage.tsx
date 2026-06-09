@@ -180,7 +180,7 @@ function ArticleEdit({ id }: { id: string }) {
   const { mutate: update, isPending: isUpdating } = useUpdateArticle()
 
   const handleSubmit = useCallback(
-    () => (data: { title: string; content: string }) => {
+    (data: { title: string; content: string }) => {
       update(
         { id: Number(id), ...data },
         {
@@ -209,7 +209,7 @@ function ArticleCreate() {
   const { mutate: create, isPending: isCreating } = useCreateArticle()
 
   const handleSubmit = useCallback(
-    () => (data: { title: string; content: string }) => {
+    (data: { title: string; content: string }) => {
       create(data, {
         onSuccess: () => {
           navigate("/admin")
