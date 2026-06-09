@@ -11,8 +11,6 @@ const CATEGORIES = [
   { id: "tech", label: "Технологии" },
 ] as const
 
-// Пока состояние локальное. Когда добавятся роуты по категориям —
-// заменить на NavLink из react-router с useParams.
 export function CategoryNav({
   searchParams,
   onCategoryChange,
@@ -27,6 +25,10 @@ export function CategoryNav({
           key={cat.id}
           onClick={() =>
             onCategoryChange((prev) => {
+              if (cat.id === "home") {
+                prev.delete("category")
+                return prev
+              }
               prev.set("category", cat.id)
               return prev
             })
