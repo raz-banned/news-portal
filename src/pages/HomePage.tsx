@@ -58,7 +58,7 @@ export function HomePage() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="grid grid-cols-[1fr_220px] place-items-center gap-2.5">
+      <div className="grid grid-cols-1 items-start gap-2.5 md:grid-cols-[1fr_220px]">
         <HeroArticle article={hero} />
         <TopNewsSidebar articles={rest} />
       </div>

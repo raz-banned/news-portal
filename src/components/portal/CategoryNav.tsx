@@ -19,7 +19,7 @@ export function CategoryNav({
   onCategoryChange: SetURLSearchParams
 }) {
   return (
-    <nav className="flex items-center border-b-2 border-portal-red bg-white px-4">
+    <nav className="flex scrollbar-none items-center overflow-x-auto border-b-2 border-portal-red bg-white px-4 [&::-webkit-scrollbar]:hidden">
       {CATEGORIES.map((cat) => (
         <button
           key={cat.id}

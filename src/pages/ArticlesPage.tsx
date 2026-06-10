@@ -6,7 +6,7 @@ import { usePaginatedArticles } from "@/features/articles/hooks/usePaginatedArti
 
 function GridSkeleton() {
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
       {Array.from({ length: 9 }).map((_, i) => (
         <Skeleton key={i} className="h-40 rounded" />
       ))}
@@ -34,7 +34,7 @@ export function ArticlesPage() {
 
     return (
       <>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {data.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}

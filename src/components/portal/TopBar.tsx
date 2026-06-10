@@ -20,7 +20,9 @@ export function TopBar() {
 
   return (
     <div className="flex items-center justify-between bg-portal-navy px-4 py-1.5 text-[11px] text-portal-navy-text">
-      <span className="capitalize">{date} · Астана, +22°C</span>
+      <span className="hidden capitalize sm:inline">
+        {date} · Астана, +22°C
+      </span>
       <div className="flex items-center">
         {LANGUAGES.map((l, i) => (
           <span key={l.code} className="flex items-center">

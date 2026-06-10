@@ -17,7 +17,7 @@ export function PortalHeader({ searchParams, onSearch }: PortalHeaderProps) {
       >
         News<em className="text-[#f5a623] not-italic">Portal</em>.kz
       </Link>
-      <div className="flex h-7.5 w-52 overflow-hidden rounded bg-white">
+      <div className="flex h-7.5 w-44 overflow-hidden rounded bg-white sm:w-52">
         <Input
           type="text"
           placeholder="Поиск новостей..."

@@ -13,7 +13,7 @@ export function TopNewsSidebar({ articles }: TopNewsSidebarProps) {
   const items = articles.slice(0, MAX_ITEMS)
 
   return (
-    <div className="flex flex-col overflow-hidden rounded">
+    <div className="hidden flex-col overflow-hidden rounded md:flex">
       <div className="bg-portal-navy px-2.5 py-2">
         <span className="text-[11px] font-semibold tracking-wide text-white uppercase">
           Топ новостей
