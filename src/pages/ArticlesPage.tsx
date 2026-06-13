@@ -1,8 +1,7 @@
 import { ArticleCard } from "@/components/portal/ArticleCard"
 import { QueryError } from "@/components/QueryError"
 import { Skeleton } from "@/components/ui/skeleton"
-import { useSearchParams } from "react-router"
-import { usePaginatedArticles } from "@/features/articles/hooks/usePaginatedArticles"
+import { useInfiniteArticles } from "@/features/articles/hooks/useInfiniteArticles"
 
 function GridSkeleton() {
   return (
@@ -15,16 +14,22 @@ function GridSkeleton() {
 }
 
 export function ArticlesPage() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const { data, isPending, isError, error, refetch } = usePaginatedArticles({
-    page: searchParams.get("page") || "1",
-    limit: searchParams.get("limit") || "12",
-  })
+  const {
+    data,
+    isPending,
+    isError,
+    hasNextPage,
+    error,
+    fetchNextPage,
+    refetch,
+  } = useInfiniteArticles()
+
+  const articles = data?.pages.flatMap((page) => page.articles) || []
 
   const render = () => {
     if (isPending) return <GridSkeleton />
     if (isError) return <QueryError error={error} onRetry={refetch} />
-    if (data && data.length === 0) {
+    if (data && articles.length === 0) {
       return (
         <p className="py-8 text-center text-sm text-muted-foreground">
           Нет статей
@@ -35,21 +40,15 @@ export function ArticlesPage() {
     return (
       <>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
-          {data.map((article) => (
+          {articles.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
 
         <div>
-          {data.length >= 12 && (
+          {hasNextPage && (
             <button
-              onClick={() => {
-                const nextPage = parseInt(searchParams.get("page") || "1") + 1
-                setSearchParams((prev) => {
-                  prev.set("page", String(nextPage))
-                  return prev
-                })
-              }}
+              onClick={() => fetchNextPage()}
               className="mx-auto mt-4 block rounded bg-portal-red px-4 py-2 text-sm font-medium text-white hover:bg-portal-red/90"
             >
               Загрузить еще
@@ -68,7 +67,8 @@ export function ArticlesPage() {
         </h1>
         <div className="h-px flex-1 bg-gray-200" />
         <span className="text-[11px] text-gray-400">
-          {data?.length ?? 0} материалов
+          {articles.length}
+          материалов
         </span>
       </div>
 
