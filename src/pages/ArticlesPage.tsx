@@ -2,6 +2,8 @@ import { ArticleCard } from "@/components/portal/ArticleCard"
 import { QueryError } from "@/components/QueryError"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useInfiniteArticles } from "@/features/articles/hooks/useInfiniteArticles"
+import { useEffect } from "react"
+import { useInView } from "react-intersection-observer"
 
 function GridSkeleton() {
   return (
@@ -17,14 +19,22 @@ export function ArticlesPage() {
   const {
     data,
     isPending,
+    isFetchingNextPage,
     isError,
     hasNextPage,
     error,
     fetchNextPage,
     refetch,
   } = useInfiniteArticles()
+  const { ref, inView } = useInView({ threshold: 0.5 })
 
   const articles = data?.pages.flatMap((page) => page.articles) || []
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage])
 
   const render = () => {
     if (isPending) return <GridSkeleton />
@@ -45,16 +55,7 @@ export function ArticlesPage() {
           ))}
         </div>
 
-        <div>
-          {hasNextPage && (
-            <button
-              onClick={() => fetchNextPage()}
-              className="mx-auto mt-4 block rounded bg-portal-red px-4 py-2 text-sm font-medium text-white hover:bg-portal-red/90"
-            >
-              Загрузить еще
-            </button>
-          )}
-        </div>
+        <div ref={ref} className="h-4 opacity-0" />
       </>
     )
   }
