@@ -4,6 +4,21 @@ A full-featured, high-performance news portal and robust content management syst
 
 The application delivers a smooth end-user reading experience alongside a secure, responsive editorial dashboard for content creators.
 
+## 📷 Screenshots
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <h4>Home</h4>
+      <img src="./screenshots/home.png" width="100%" alt="Home Screen">
+    </td>
+    <td width="50%" align="center" valign="top">
+      <h4>Admin Panel</h4>
+      <img src="./screenshots/admin.png" width="100%" alt="Admin Panel">
+    </td>
+  </tr>
+</table>
+
 ## 🚀 Key Features
 
 ### 🖥️ Frontend News Portal
